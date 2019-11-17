@@ -8,14 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+
+class CategoryController extends AbstractController
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/category", name="app.category")
      */
-    public function index(): Response
+    public function showCategory(): Response
     {
-        return $this->render('pages/home/homePage.html.twig');
+        return $this->render('pages/category/categoryIndex.html.twig');
     }
 
 }
