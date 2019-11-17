@@ -8,14 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CategoryController extends AbstractController
+class AuthorController extends AbstractController
 {
     /**
-     * @Route("/category", name="app.category")
+     * @Route("/author", name="app.author")
      */
-    public function showCategory(): Response
+    public function showAuthor(): Response
     {
-        return $this->render('pages/category/categoryIndex.html.twig');
+        return $this->render('pages/author/authorIndex.html.twig');
     }
 
 }
