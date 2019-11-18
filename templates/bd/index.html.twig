@@ -37,25 +37,25 @@
                 <td>{{ bd.author }}</td>
                 <td>{{ bd.edition }}</td>
                 <td>{{ bd.collection }}</td>
-                <td>{{ bd.creationDate }}</td>
-                <td>{{ bd.ownedBdDate }}</td>
+                {#<td>{{ bd.creationDate }}</td>#}
+                {#<td>{{ bd.ownedBdDate }}</td>#}
                 <td>{{ bd.value }}</td>
                 <td>{{ bd.price }}</td>
                 <td>{{ bd.comment }}</td>
                 <td>{{ bd.ISBN }}</td>
                 <td>{{ bd.onLoan ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('bd_show', {'id': b_d.id}) }}">show</a>
-                    <a href="{{ path('bd_edit', {'id': b_d.id}) }}">edit</a>
+                    <a href="{{ path('bd_show', {'id': bd.id}) }}">show</a>
+                    <a href="{{ path('bd_edit', {'id': bd.id}) }}">edit</a>
                 </td>
-            </tr>
+                </tr>
         {% else %}
-            <tr>
+                <tr>
                 <td colspan="16">no records found</td>
-            </tr>
+                </tr>
         {% endfor %}
-        </tbody>
-    </table>
+                </tbody>
+                </table>
 
-    <a href="{{ path('bd_new') }}">Create new</a>
+                <a href="{{ path('bd_new') }}">Create new</a>
 {% endblock %}
