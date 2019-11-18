@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BD{% endblock %}
+
+{% block body %}
+    <h1>BD</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bd.id }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ bd.genre }}</td>
+            </tr>
+            <tr>
+                <th>Serie</th>
+                <td>{{ bd.serie }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ bd.title }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ bd.image }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ bd.author }}</td>
+            </tr>
+            <tr>
+                <th>Edition</th>
+                <td>{{ bd.edition }}</td>
+            </tr>
+            <tr>
+                <th>Collection</th>
+                <td>{{ bd.collection }}</td>
+            </tr>
+            <tr>
+                <th>Creation_date</th>
+                <td>{{ bd.creationDate }}</td>
+            </tr>
+            <tr>
+                <th>Owned_bd_date</th>
+                <td>{{ bd.ownedBdDate }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ bd.value }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ bd.price }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ bd.comment }}</td>
+            </tr>
+            <tr>
+                <th>ISBN</th>
+                <td>{{ bd.ISBN }}</td>
+            </tr>
+            <tr>
+                <th>On_loan</th>
+                <td>{{ bd.onLoan ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('bd_index') }}">back to list</a>
+
+    <a href="{{ path('bd_edit', {'id': b_d.id}) }}">edit</a>
+
+    {{ include('bd/_delete_form.html.twig') }}
+{% endblock %}
