@@ -37,8 +37,8 @@
                 <td>{{ bd.author }}</td>
                 <td>{{ bd.edition }}</td>
                 <td>{{ bd.collection }}</td>
-                {#<td>{{ bd.creationDate }}</td>#}
-                {#<td>{{ bd.ownedBdDate }}</td>#}
+                <td>{{ bd.creationDate|date('Y') }}</td>
+                <td>{{ bd.ownedBdDate|date('Y') }}</td>
                 <td>{{ bd.value }}</td>
                 <td>{{ bd.price }}</td>
                 <td>{{ bd.comment }}</td>

@@ -41,11 +41,11 @@
             </tr>
             <tr>
                 <th>Creation_date</th>
-                <td>{{ bd.creationDate }}</td>
+                <td>{{ bd.creationDate|date('Y') }}</td>
             </tr>
             <tr>
                 <th>Owned_bd_date</th>
-                <td>{{ bd.ownedBdDate }}</td>
+                <td>{{ bd.ownedBdDate|date('Y') }}</td>
             </tr>
             <tr>
                 <th>Value</th>
@@ -72,7 +72,7 @@
 
     <a href="{{ path('bd_index') }}">back to list</a>
 
-    <a href="{{ path('bd_edit', {'id': b_d.id}) }}">edit</a>
+    <a href="{{ path('bd_edit', {'id': bd.id}) }}">edit</a>
 
     {{ include('bd/_delete_form.html.twig') }}
 {% endblock %}
