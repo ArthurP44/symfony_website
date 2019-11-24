@@ -1,23 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Accueil'%}
+{% block title 'Accueil' %}
 
 {% block navBar %}
     {% include '/navbars/navbarHomeAdmin.html.twig' %}
 {% endblock %}
 
 {% block body %}
-    <div class = "container-fluid mt-5">
+    <div class="container-fluid mt-5">
         <div class="row d-flex justify-content-center">
-            <div class = "jumbotron text-center">
+            <div class="jumbotron text-center">
                 <h1>Bienvenue dans la BDthèque de Finou !</h1>
             </div>
         </div>
     </div>
-    <div class = "container-fluid mt-5">
+    <div class="container-fluid mt-5">
         <div class="row d-flex justify-content-center">
-            <div class = "jumbotron text-center">
-                <h1>Les derniers ajouts à ma collection : </h1>
+            <div class="jumbotron text-center">
+                <h1 class="mb-5">Les derniers ajouts à ma collection : </h1>
+                {% for bd in bds %}
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ bd.title }}
+                            </h5>
+                            <p class="card-text">({{ bd.createdAt|date('d-m-y') }})</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

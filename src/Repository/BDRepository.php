@@ -19,6 +19,24 @@ class BDRepository extends ServiceEntityRepository
         parent::__construct($registry, BD::class);
     }
 
+    public function findByDate(): array
+    {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd')
+            ->setMaxResults(4)
+            ->orderBy('bd.createdAt', 'desc');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findByGenre(): array
+    {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd.genre')
+            ->distinct('bd.genre')
+            ->orderBy('bd.genre', 'desc');
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return BD[] Returns an array of BD objects
     //  */

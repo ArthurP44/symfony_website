@@ -57,6 +57,11 @@ class BD
     private $creation_date;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $owned_bd_date;
@@ -257,5 +262,21 @@ class BD
         $this->on_loan = $on_loan;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt): void
+    {
+        $this->createdAt = $createdAt;
     }
 }

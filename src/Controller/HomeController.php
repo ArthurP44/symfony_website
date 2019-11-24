@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Repository\BDRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +14,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(): Response
+    public function index(BDRepository $BDRepository): Response
     {
-        return $this->render('pages/home/homePage.html.twig');
+        $bds = $BDRepository->findByDate();
+        return $this->render('pages/home/homePage.html.twig', [
+            'bds' => $bds
+        ]);
     }
 
 }
