@@ -9,15 +9,13 @@
 {% block body %}
     <div class = "container-fluid mt-5">
         <div class="row d-flex justify-content-center">
-            <div class = "jumbotron text-center">
-                <h1>Auteurs : </h1>
-            </div>
-        </div>
-    </div>
-    <div class = "container-fluid mt-5">
-        <div class="row d-flex justify-content-center">
-            <div class = "jumbotron text-center">
-
+            <div class="card">
+                <p>Auteurs : </p>
+                {% for bd in bds %}
+                    <ul>
+                        <li>{{ bd.author}}</li>
+                    </ul>
+                {% endfor %}
             </div>
         </div>
     </div>

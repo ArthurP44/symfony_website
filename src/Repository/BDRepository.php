@@ -37,6 +37,15 @@ class BDRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function findByAuthor(): array
+    {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd.author')
+            ->distinct('bd.author')
+            ->orderBy('bd.author', 'desc');
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return BD[] Returns an array of BD objects
     //  */
