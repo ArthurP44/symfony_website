@@ -11,20 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
-//    /**
-//     * @Route("/category", name="category_list")
-//     */
-//    public function listCategory(BDRepository $BDRepository): Response
-//    {
-//        return $this->render('pages/category/categoryIndex.html.twig', [
-//            'bds' => $BDRepository->findAll()
-//        ]);
-//    }
-
     /**
      * @Route("/category", name="category_list")
      */
-    public function listGenre(BDRepository $BDRepository) : Response
+    public function listGenre(BDRepository $BDRepository): Response
     {
         return $this->render('pages/category/categoryIndex.html.twig', [
             'bds' => $BDRepository->findByGenre()

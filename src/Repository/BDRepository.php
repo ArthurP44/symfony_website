@@ -46,6 +46,15 @@ class BDRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function isBorrowed(): array
+    {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd.title','bd.comment')
+            ->where('bd.on_loan = true')
+            ->orderBy('bd.title', 'desc');
+        return $query->getQuery()->getResult();
+    }
+
     // /**
     //  * @return BD[] Returns an array of BD objects
     //  */
