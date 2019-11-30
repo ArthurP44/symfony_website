@@ -7,59 +7,63 @@
 {% endblock %}
 
 {% block body %}
-    <h1>BD index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Genre</th>
-                <th>Serie</th>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Author</th>
-                <th>Edition</th>
-                <th>Collection</th>
-                <th>Creation_date</th>
-                <th>Owned_bd_date</th>
-                <th>Value</th>
-                <th>Price</th>
-                <th>Comment</th>
-                <th>ISBN</th>
-                <th>On_loan</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for bd in bds %}
-            <tr>
-                <td>{{ bd.id }}</td>
-                <td>{{ bd.genre }}</td>
-                <td>{{ bd.serie }}</td>
-                <td>{{ bd.title }}</td>
-                <td>{{ bd.image }}</td>
-                <td>{{ bd.author }}</td>
-                <td>{{ bd.edition }}</td>
-                <td>{{ bd.collection }}</td>
-                <td>{{ bd.creationDate|date('Y') }}</td>
-                <td>{{ bd.ownedBdDate|date('Y') }}</td>
-                <td>{{ bd.value }}</td>
-                <td>{{ bd.price }}</td>
-                <td>{{ bd.comment }}</td>
-                <td>{{ bd.ISBN }}</td>
-                <td>{{ bd.onLoan ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('bd_show', {'id': bd.id}) }}">show</a>
-                    <a href="{{ path('bd_edit', {'id': bd.id}) }}">edit</a>
-                </td>
-                </tr>
-        {% else %}
+    <div class="container-fluid mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="mb-5 ">Tableau de bord</h1>
+            <table class="table">
+                <thead>
                 <tr>
-                <td colspan="16">no records found</td>
+                    <th>Id</th>
+                    <th>Genre</th>
+                    <th>Série</th>
+                    <th>Titre</th>
+                    <th>Image</th>
+                    <th>Auteur</th>
+                    <th>Édition</th>
+                    <th>Collection</th>
+                    <th>Date de création</th>
+                    <th>Date de mon édition</th>
+                    <th>Cote</th>
+                    <th>Prix</th>
+                    <th>Commentaire</th>
+                    <th>ISBN</th>
+                    <th>En prêt</th>
+                    <th></th>
                 </tr>
-        {% endfor %}
+                </thead>
+                <tbody>
+                {% for bd in bds %}
+                    <tr>
+                        <td>{{ bd.id }}</td>
+                        <td>{{ bd.genre }}</td>
+                        <td>{{ bd.serie }}</td>
+                        <td>{{ bd.title }}</td>
+                        <td>{{ bd.image }}</td>
+                        <td>{{ bd.author }}</td>
+                        <td>{{ bd.edition }}</td>
+                        <td>{{ bd.collection }}</td>
+                        <td>{{ bd.creationDate|date('Y') }}</td>
+                        <td>{{ bd.ownedBdDate|date('Y') }}</td>
+                        <td>{{ bd.value }}</td>
+                        <td>{{ bd.price }}</td>
+                        <td>{{ bd.comment }}</td>
+                        <td>{{ bd.ISBN }}</td>
+                        <td>{{ bd.onLoan ? 'Oui' : 'Non' }}</td>
+                        <td>
+                            <a class="btn btn-danger mb-3" href="{{ path('bd_show', {'id': bd.id}) }}">voir</a>
+                            <a class="btn btn-warning" href="{{ path('bd_edit', {'id': bd.id}) }}">modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="16">no records found</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
-                </table>
+            </table>
 
-                <a href="{{ path('bd_new') }}">Create new</a>
+            <a class="btn btn-success" href="{{ path('bd_new') }}">Ajouter</a>
+        </div>
+    </div>
+
 {% endblock %}

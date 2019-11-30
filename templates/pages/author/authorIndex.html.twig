@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Auteurs'%}
+{% block title 'Auteurs' %}
 
 {% block navBar %}
     {% include '/navbars/navbarHomeAdmin.html.twig' %}
 {% endblock %}
 
 {% block body %}
-    <div class = "container-fluid mt-5">
-        <div class="row d-flex justify-content-center">
-            <div class="card">
-                <p>Auteurs : </p>
-                {% for bd in bds %}
-                    <ul>
-                        <li>{{ bd.author}}</li>
-                    </ul>
-                {% endfor %}
+    <div class="container-fluid mt-5">
+        <div class="jumbotron">
+            <div class="row d-flex justify-content-center">
+                <div class="card ">
+                    <div class="mb-4 ml-3 mr-3">
+                        <p class="text-center">Auteurs : </p>
+                        <select>
+                            {% for bd in bds %}
+                                <option>{{ bd.author }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
