@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <div class="jumbotron">
             <div class="row">
-                <div class="col-4">
+                <div class="col-4 ml-5">
                     <div class="row">
                         <div class="col">
                             <div class="card mb-3" style="max-width: 540px; max-height: 600px">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="card mb-3" style="max-width: 420px; max-height: 29em">
+                            <div class="card mb-3 mt-4" style="max-width: 420px; max-height: 29em">
                                 <div class="row no-gutters">
                                     <div class="col-md-8">
                                         <div class="card-body" style="height: 40em; width: 20em;">
@@ -39,24 +39,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-7">
                     <div class="card mb-3 ml-5" style="max-width: 540px;">
                         <div class="row no-gutters">
                             <div class="col-md-8">
                                 <div class="card-body" style="height: 37.6em">
-                                    <p class="card-text"><strong>Genre : </strong>{{ bd.genre }}</p>
-                                    <p class="card-text"><strong>Série : </strong>{{ bd.serie }}</p>
-                                    <p class="card-text"><strong>Édition : </strong>{{ bd.edition }}</p>
-                                    <p class="card-text"><strong>Collection : </strong>{{ bd.collection }}</p>
-                                    <p class="card-text"><strong>Date de création
-                                            : </strong>{{ bd.creationDate|date('Y') }}</p>
-                                    <p class="card-text"><strong>Date de mon édition
-                                            : </strong>{{ bd.ownedBdDate|date('Y') }}</p>
-                                    <p class="card-text"><strong>Cote : </strong>{{ bd.value }}</p>
-                                    <p class="card-text"><strong>Prix : </strong>{{ bd.price }} €</p>
-                                    <p class="card-text"><strong>ISBN : </strong>{{ bd.ISBN }}</p>
-                                    <p class="card-text"><strong>En prêt : </strong>{{ bd.onLoan ? 'Oui' : 'Non' }}</p>
-                                    <p class="card-text"><strong>Commentaire : </strong>{{ bd.comment }}</p>
+                                    <div class="container ml-4 mt-4">
+                                        <p class="card-text"><strong>Genre : </strong>{{ bd.genre }}</p>
+                                        <p class="card-text"><strong>Série : </strong>{{ bd.serie }}</p>
+                                        <p class="card-text"><strong>Édition : </strong>{{ bd.edition }}</p>
+                                        <p class="card-text"><strong>Collection : </strong>{{ bd.collection }}</p>
+                                        <p class="card-text"><strong>Date de création
+                                                : </strong>{{ bd.creationDate|date('Y') }}</p>
+                                        <p class="card-text"><strong>Date de mon édition
+                                                : </strong>{{ bd.ownedBdDate|date('Y') }}</p>
+                                        <p class="card-text"><strong>Cote : </strong>{{ bd.value }}</p>
+                                        <p class="card-text"><strong>Prix : </strong>{{ bd.price }} €</p>
+                                        <p class="card-text"><strong>ISBN : </strong>{{ bd.ISBN }}</p>
+                                        <p class="card-text"><strong>En prêt : </strong>{{ bd.onLoan ? 'Oui' : 'Non' }}</p>
+                                        <p class="card-text"><strong>Commentaire : </strong>{{ bd.comment }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
