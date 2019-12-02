@@ -14,14 +14,22 @@
             </div>
         </div>
     </div>
-    {% for bd in bds %}
-        <div class="col-md-3 text-center">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ bd.title }}</h5>
-                    <p class="card-text">({{ bd.comment }})</p>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            {% for bd in bds %}
+                <div class="col-md-3 text-center">
+                    <a class="btn" href="{{ path('bd_show', {'id': bd.id}) }}">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <img src="{{ asset('build/undertaker.jpg') }}" alt="bd cover" style="height: 22em; width: 15em">
+                                <h5 class="card-title mt-3">{{ bd.title }}</h5>
+                                <p class="card-text">({{ bd.comment }})</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+
 {% endblock %}

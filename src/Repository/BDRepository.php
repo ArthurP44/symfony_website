@@ -31,7 +31,7 @@ class BDRepository extends ServiceEntityRepository
     public function findByGenre(): array
     {
         $query = $this->createQueryBuilder('bd')
-            ->select('bd.genre')
+            ->select('bd.genre, bd.id')
             ->distinct('bd.genre')
             ->orderBy('bd.genre', 'desc');
         return $query->getQuery()->getResult();
@@ -49,7 +49,7 @@ class BDRepository extends ServiceEntityRepository
     public function isBorrowed(): array
     {
         $query = $this->createQueryBuilder('bd')
-            ->select('bd.title','bd.comment')
+            ->select('bd.title','bd.comment, bd.id')
             ->where('bd.on_loan = true')
             ->orderBy('bd.title', 'desc');
         return $query->getQuery()->getResult();
