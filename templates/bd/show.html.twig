@@ -57,7 +57,9 @@
                                         <p class="card-text"><strong>Prix : </strong>{{ bd.price }} €</p>
                                         <p class="card-text"><strong>ISBN : </strong>{{ bd.ISBN }}</p>
                                         <p class="card-text"><strong>En prêt : </strong>{{ bd.onLoan ? 'Oui' : 'Non' }}</p>
-                                        <p class="card-text"><strong>Commentaire : </strong>{{ bd.comment }}</p>
+                                        {% if bd.comment %}
+                                            <p class="card-text"><strong>Commentaire : </strong>{{ bd.comment }}</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
