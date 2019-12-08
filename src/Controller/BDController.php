@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BD;
 use App\Form\BDType;
 use App\Repository\BDRepository;
+use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,13 +29,17 @@ class BDController extends AbstractController
     /**
      * @Route("/new", name="bd_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, FileUploader $fileUploader): Response
     {
         $bD = new BD();
         $form = $this->createForm(BDType::class, $bD);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $bD->getImage();
+            $fileName = $fileUploader->upload($file);
+            $bD->setImage($fileName);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bD);
             $entityManager->flush();

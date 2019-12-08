@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BDRepository")
@@ -33,6 +34,7 @@ class BD
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Image
      */
     private $image;
 
