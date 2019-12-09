@@ -27,7 +27,7 @@ class BDType extends AbstractType
             ->add('title',TextType::class, [
                 'label' => 'Titre :'
             ])
-            ->add('image',FileType::class, [
+            ->add('imageFile',FileType::class, [
                 'label' => 'Couverture :',
                 'required' => false
             ])

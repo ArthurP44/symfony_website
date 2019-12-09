@@ -29,17 +29,13 @@ class BDController extends AbstractController
     /**
      * @Route("/new", name="bd_new", methods={"GET","POST"})
      */
-    public function new(Request $request, FileUploader $fileUploader): Response
+    public function new(Request $request): Response
     {
         $bD = new BD();
         $form = $this->createForm(BDType::class, $bD);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $bD->getImage();
-            $fileName = $fileUploader->upload($file);
-            $bD->setImage($fileName);
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bD);
             $entityManager->flush();
