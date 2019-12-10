@@ -49,7 +49,7 @@ class BDRepository extends ServiceEntityRepository
     public function isBorrowed(): array
     {
         $query = $this->createQueryBuilder('bd')
-            ->select('bd.title','bd.comment, bd.id')
+            ->select('bd.title','bd.comment, bd.id', 'bd.filename')
             ->where('bd.on_loan = true')
             ->orderBy('bd.title', 'desc');
         return $query->getQuery()->getResult();

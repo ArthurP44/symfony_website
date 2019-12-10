@@ -1,13 +1,42 @@
 {% block navBar %}
     {% include '/navbars/navbarHomeAdmin.html.twig' %}
 {% endblock %}
-<div class="jumbotron">
-    <div class ="row">
-        <div class ="col-md-6">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button class="btn btn-outline-success">{{ button_label|default('Enregistrer') }}</button>
-            {{ form_end(form) }}
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">
+                {{ form_start(form) }}
+                <div class="row mt-5">
+                    <div class='col-md-6'>{{ form_row(form.title) }}</div>
+                    <div class='col-md-6'>{{ form_row(form.author) }}</div>
+                </div>
+                <div class="row">
+                    <div class='col-md-6'>{{ form_row(form.serie) }}</div>
+                    <div class='col-md-6'>{{ form_row(form.collection) }}</div>
+                </div>
+                <div class="row">
+                    <div class='col-md-6'>{{ form_row(form.edition) }}</div>
+                    <div class='col-md-6'>{{ form_row(form.genre) }}</div>
+                </div>
+                <div class="row">
+                    <div class='col'>{{ form_row(form.imageFile) }}</div>
+                </div>
+                <div class="row">
+                    <div class='col-md-6'>{{ form_row(form.creation_date) }}</div>
+                    <div class='col-md-6'>{{ form_row(form.owned_bd_date) }}</div>
+                </div>
+                <div class="row">
+                    <div class='col-md-4'>{{ form_row(form.ISBN) }}</div>
+                    <div class='col-md-4'>{{ form_row(form.price) }}</div>
+                    <div class='col-md-4'>{{ form_row(form.value) }}</div>
+                </div>
+                <div class="row">
+                    <div class='col'>{{ form_row(form.on_loan) }}</div>
+                </div>
+                {{ form_widget(form) }}
+                <button class="btn btn-outline-success mt-3">{{ button_label|default('Enregistrer') }}</button>
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 </div>

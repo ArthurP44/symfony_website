@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -44,10 +45,16 @@ class BDType extends AbstractType
             ])
             ->add('creation_date',DateType::class, [
                 'label' => 'Date de création :',
+                'format' => 'dMy',
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y')-99),
                 'required' => false
             ])
             ->add('owned_bd_date',DateType::class, [
                 'label' => 'Date de mon exemplaire :',
+                'format' => 'dMy',
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y')-99),
                 'required' => false
             ])
             ->add('value',IntegerType::class, [
@@ -58,7 +65,7 @@ class BDType extends AbstractType
                 'label' => 'Prix :',
                 'required' => false
             ])
-            ->add('comment',TextType::class, [
+            ->add('comment',TextareaType::class, [
                 'label' => 'Commentaire :',
                 'required' => false
             ])
