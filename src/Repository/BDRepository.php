@@ -23,17 +23,17 @@ class BDRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('bd')
             ->select('bd')
-            ->setMaxResults(4)
-            ->orderBy('bd.createdAt', 'desc');
+            ->setMaxResults(5)
+            ->orderBy('bd.createdAt', 'DESC');
         return $query->getQuery()->getResult();
     }
 
     public function findByGenre(): array
     {
         $query = $this->createQueryBuilder('bd')
-            ->select('bd.genre, bd.id')
+            ->select('bd.genre')
             ->distinct('bd.genre')
-            ->orderBy('bd.genre', 'desc');
+            ->orderBy('bd.genre', 'ASC');
         return $query->getQuery()->getResult();
     }
 
@@ -42,7 +42,7 @@ class BDRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('bd')
             ->select('bd.author')
             ->distinct('bd.author')
-            ->orderBy('bd.author', 'desc');
+            ->orderBy('bd.author', 'ASC');
         return $query->getQuery()->getResult();
     }
 
