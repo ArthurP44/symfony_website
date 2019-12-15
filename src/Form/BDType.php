@@ -48,14 +48,16 @@ class BDType extends AbstractType
                 'format' => 'dMy',
                 'widget' => 'choice',
                 'years' => range(date('Y'), date('Y')-99),
-                'required' => false
+                'required' => false,
+                'help' => "Seule l'année est prise en compte",
             ])
             ->add('owned_bd_date',DateType::class, [
                 'label' => 'Date de mon exemplaire :',
                 'format' => 'dMy',
                 'widget' => 'choice',
                 'years' => range(date('Y'), date('Y')-99),
-                'required' => false
+                'required' => false,
+                'help' => "Seule l'année est prise en compte",
             ])
             ->add('value',IntegerType::class, [
                 'label' => 'Cote :',
@@ -63,11 +65,15 @@ class BDType extends AbstractType
             ])
             ->add('price',IntegerType::class, [
                 'label' => 'Prix :',
-                'required' => false
+                'required' => false,
+                'help' => 'Ne pas rentrer la devise',
+
+
             ])
             ->add('comment',TextareaType::class, [
                 'label' => 'Commentaire :',
-                'required' => false
+                'required' => false,
+                'help' => 'Prêtée à Jean, doublons (...)',
             ])
             ->add('ISBN',TextType::class, [
                 'label' => 'ISBN :',
