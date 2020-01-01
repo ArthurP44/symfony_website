@@ -67,11 +67,6 @@ class BD
     private $creation_date;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $createdAt;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $owned_bd_date;
@@ -100,6 +95,11 @@ class BD
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $on_loan;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
 
     public function getId(): ?int
     {
@@ -263,22 +263,6 @@ class BD
     }
 
     /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt($createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
      * @return string|null
      */
     public function getFilename(): ?string
@@ -309,4 +293,17 @@ class BD
     {
         $this->imageFile = $imageFile;
     }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
 }

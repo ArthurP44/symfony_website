@@ -24,7 +24,7 @@ class BDRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('bd')
             ->select('bd')
             ->setMaxResults(5)
-            ->orderBy('bd.createdAt', 'ASC');
+            ->orderBy('bd.created_at', 'ASC');
         return $query->getQuery()->getResult();
     }
 

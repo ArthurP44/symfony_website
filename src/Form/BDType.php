@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\BD;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -83,6 +84,10 @@ class BDType extends AbstractType
                 'label' => 'En prêt',
                 'required' => false
             ])
+            ->add('created_at',DateTimeType::class,  array(
+                'label' => "Date d'ajout",
+                'data' => new \DateTime()
+            ));
         ;
     }
 
