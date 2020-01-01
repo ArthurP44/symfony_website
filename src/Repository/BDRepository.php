@@ -22,9 +22,9 @@ class BDRepository extends ServiceEntityRepository
     public function findByDate(): array
     {
         $query = $this->createQueryBuilder('bd')
-            ->select('bd')
+            ->select('bd.title', 'bd.created_at', 'bd.id')
             ->setMaxResults(5)
-            ->orderBy('bd.created_at', 'ASC');
+            ->orderBy('bd.created_at', 'DESC');
         return $query->getQuery()->getResult();
     }
 
