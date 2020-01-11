@@ -9,7 +9,6 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 /**
  * @method BD|null find($id, $lockMode = null, $lockVersion = null)
  * @method BD|null findOneBy(array $criteria, array $orderBy = null)
- * @method BD[]    findAll()
  * @method BD[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class BDRepository extends ServiceEntityRepository
@@ -17,6 +16,40 @@ class BDRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, BD::class);
+    }
+
+    public function findBD() {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd')
+            ->orderBy('bd.created_at', 'DESC');
+        return $query->getQuery()->getResult();
+    }
+
+    public function countBD() {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd');
+        return $query->getQuery()->getResult();
+    }
+
+    public function countBdGenre() {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd.genre')
+            ->distinct('bd.genre');
+        return $query->getQuery()->getResult();
+    }
+
+    public function countBdOnLoan() {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd')
+            ->where('bd.on_loan = true');
+        return $query->getQuery()->getResult();
+    }
+
+    public function countAuthor() {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd.author')
+            ->distinct('bd.author');
+        return $query->getQuery()->getResult();
     }
 
     public function findByDate(): array

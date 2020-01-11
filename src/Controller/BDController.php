@@ -22,7 +22,7 @@ class BDController extends AbstractController
     public function index(BDRepository $bDRepository): Response
     {
         return $this->render('bd/index.html.twig', [
-            'bds' => $bDRepository->findAll(),
+            'bds' => $bDRepository->findBD(),
         ]);
     }
 

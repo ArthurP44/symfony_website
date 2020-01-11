@@ -7,28 +7,76 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid mt-5">
-        <div class="row d-flex justify-content-center">
-            <div class="jumbotron text-center">
-                <h1>Bienvenue dans la BDthèque de Finou !</h1>
-            </div>
+    <div class="d-flex justify-content-center mt-5">
+        <div class="jumbotron text-center">
+            <h1>Bienvenue dans la BDthèque de Finou !</h1>
         </div>
     </div>
+
     <div class="container-fluid mt-5">
         <div class="row d-flex justify-content-center">
-            <div class="jumbotron text-center">
-                <h1 class="mb-5">Les derniers ajouts à ma collection : </h1>
-                {% for bd in bds %}
-                    <div class="card mt-3">
-                        <a class="btn" href="{{ path('bd_show', {'id': bd.id}) }}">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ bd.title }}
-                                </h5>
+            <div class="col-md-6">
+                <div class="jumbotron text-center">
+                    <h2 class="mb-5">Les derniers ajouts à ma collection : </h2>
+                    {% for bd in bds %}
+                        <div class="card mt-3">
+                            <a class="btn" href="{{ path('bd_show', {'id': bd.id}) }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{ bd.title }}
+                                    </h5>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-3 ml-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="jumbotron">
+                            <div class="card mb-3" style="max-width: 540px; max-height: 600px">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">Bds : {{ total_bd|length }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="jumbotron">
+                            <div class="card mb-3" style="max-width: 540px; max-height: 600px">
+                                <div class="row no-gutters">
+                                    <div class="col">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center"> Auteurs : {{ total_author|length }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="jumbotron">
+                            <div class="card mb-3" style="max-width: 540px; max-height: 600px">
+                                <div class="row no-gutters">
+                                    <div class="col">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center"> Genres : {{ total_genre|length }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

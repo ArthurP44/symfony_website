@@ -17,8 +17,16 @@ class HomeController extends AbstractController
     public function index(BDRepository $BDRepository): Response
     {
         $bds = $BDRepository->findByDate();
+        $totalBd = $BDRepository->countBD();
+        $totalAuthor = $BDRepository->countAuthor();
+        $totalLoan = $BDRepository->countBD();
+        $totalGenre = $BDRepository->countBdGenre();
         return $this->render('pages/home/homePage.html.twig', [
-            'bds' => $bds
+            'bds' => $bds,
+            'total_bd' => $totalBd,
+            'total_author' => $totalAuthor,
+            'total_loan' => $totalLoan,
+            'total_genre' => $totalGenre,
         ]);
     }
 
