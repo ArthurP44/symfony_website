@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BD;
 use App\Form\BDType;
 use App\Repository\BDRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +17,37 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class BDController extends AbstractController
 {
+    /**
+     * @var BDRepository
+     */
+    private $repository;
+
+    public function __construct(BDRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
+     * @Route("/list", name="bd_list", methods={"GET"})
+     */
+    public function list(PaginatorInterface $paginator, Request $request): Response
+    {
+        $authors = $this->repository->findByAuthor();
+        $genres = $this->repository->findByGenre();
+        $series = $this->repository->findBySerie();
+        $Bds = $paginator->paginate(
+            $this->repository->findAllBdQuery(),
+            $request->query->getInt('page', 1),
+            12
+        );
+        return $this->render('bd/list.html.twig', [
+            'bds' => $Bds,
+            'authors' => $authors,
+            'genres' => $genres,
+            'series' => $series,
+        ]);
+    }
+
     /**
      * @Route("/index", name="bd_index", methods={"GET"})
      * @IsGranted("ROLE_ADMIN")

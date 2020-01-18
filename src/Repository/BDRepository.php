@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\BD;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
 
 /**
  * @method BD|null find($id, $lockMode = null, $lockVersion = null)
@@ -23,6 +24,14 @@ class BDRepository extends ServiceEntityRepository
             ->select('bd')
             ->orderBy('bd.created_at', 'DESC');
         return $query->getQuery()->getResult();
+    }
+
+    public function findAllBdQuery(): Query
+    {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd')
+            ->orderBy('bd.created_at', 'DESC');
+        return $query->getQuery();
     }
 
     public function countBD() {
@@ -76,6 +85,15 @@ class BDRepository extends ServiceEntityRepository
             ->select('bd.author')
             ->distinct('bd.author')
             ->orderBy('bd.author', 'ASC');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findBySerie(): array
+    {
+        $query = $this->createQueryBuilder('bd')
+            ->select('bd.serie')
+            ->distinct('bd.serie')
+            ->orderBy('bd.serie', 'ASC');
         return $query->getQuery()->getResult();
     }
 
