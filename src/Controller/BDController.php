@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/back-office")
+ * @Route("/admin/back-office")
  */
 class BDController extends AbstractController
 {
