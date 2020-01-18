@@ -5,19 +5,20 @@ namespace App\Controller;
 use App\Entity\BD;
 use App\Form\BDType;
 use App\Repository\BDRepository;
-use App\Service\FileUploader;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/back-office")
+ * @Route("/bd")
  */
 class BDController extends AbstractController
 {
     /**
-     * @Route("/", name="bd_index", methods={"GET"})
+     * @Route("/index", name="bd_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(BDRepository $bDRepository): Response
     {
@@ -28,6 +29,7 @@ class BDController extends AbstractController
 
     /**
      * @Route("/new", name="bd_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -61,6 +63,7 @@ class BDController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="bd_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, BD $bD): Response
     {
@@ -81,6 +84,7 @@ class BDController extends AbstractController
 
     /**
      * @Route("/{id}", name="bd_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, BD $bD): Response
     {
