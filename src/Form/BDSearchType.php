@@ -22,29 +22,30 @@ class BDSearchType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $authors = $this->BDRepository->findByAuthor();
+        $genres = $this->BDRepository->findByGenre();
+        $series = $this->BDRepository->findBySerie();
+        var_dump($authors);
         /*$this->BDRepository->findByAuthor()*/
 
         $builder
-            ->add('auteur', EntityType::class, [
-                'class' => BD::class,
+            ->add('auteur', ChoiceType::class, [
                 'required' => false,
                 'label' => 'Auteur :',
                 'placeholder' => 'Choisissez un Auteur',
-                'choice_label' => 'author',
+                'choices' => $authors,
             ])
-            ->add('categorie', EntityType::class, [
-                'class' => BD::class,
+            ->add('categorie', ChoiceType::class, [
                 'required' => false,
                 'label' => 'Genre :',
                 'placeholder' => 'Choisissez un Genre',
-                'choice_label' => 'genre',
+                'choices' => $genres,
             ])
-            ->add('serie', EntityType::class, [
-                'class' => BD::class,
+            ->add('serie', ChoiceType::class, [
                 'required' => false,
                 'label' => 'Série :',
                 'placeholder' => 'Choisissez une Série',
-                'choice_label' => 'serie',
+                'choices' => $series,
             ]);
     }
 
