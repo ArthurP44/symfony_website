@@ -68,8 +68,6 @@ class BDType extends AbstractType
                 'label' => 'Prix :',
                 'required' => false,
                 'help' => 'Ne pas rentrer la devise',
-
-
             ])
             ->add('comment',TextareaType::class, [
                 'label' => 'Commentaire :',

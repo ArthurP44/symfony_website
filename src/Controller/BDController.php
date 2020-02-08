@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\BD;
+use App\Entity\BDSearch;
+use App\Form\BDSearchType;
 use App\Form\BDType;
 use App\Repository\BDRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -32,6 +34,10 @@ class BDController extends AbstractController
      */
     public function list(PaginatorInterface $paginator, Request $request): Response
     {
+        $search = new BDSearch();
+        $form = $this->createForm(BDSearchType::class, $search);
+        $form->handleRequest($request);
+
         $authors = $this->repository->findByAuthor();
         $genres = $this->repository->findByGenre();
         $series = $this->repository->findBySerie();
@@ -45,12 +51,15 @@ class BDController extends AbstractController
             'authors' => $authors,
             'genres' => $genres,
             'series' => $series,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/index", name="bd_index", methods={"GET"})
      * @IsGranted("ROLE_ADMIN")
+     * @param BDRepository $bDRepository
+     * @return Response
      */
     public function index(BDRepository $bDRepository): Response
     {

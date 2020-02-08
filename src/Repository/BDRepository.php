@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\BD;
+use App\Entity\BDSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
@@ -26,7 +27,7 @@ class BDRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    public function findAllBdQuery(): Query
+    public function findAllBdQuery()
     {
         $query = $this->createQueryBuilder('bd')
             ->select('bd')

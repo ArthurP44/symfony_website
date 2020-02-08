@@ -29,5 +29,4 @@ class HomeController extends AbstractController
             'total_genre' => $totalGenre,
         ]);
     }
-
 }

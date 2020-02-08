@@ -101,6 +101,11 @@ class BD
      */
     private $created_at;
 
+    public function __toString()
+    {
+        return $this->getAuthor();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
