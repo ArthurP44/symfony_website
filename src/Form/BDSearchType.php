@@ -25,7 +25,6 @@ class BDSearchType extends AbstractType
         $authors = $this->BDRepository->findByAuthor();
         $genres = $this->BDRepository->findByGenre();
         $series = $this->BDRepository->findBySerie();
-        var_dump($authors);
         /*$this->BDRepository->findByAuthor()*/
 
         $builder
